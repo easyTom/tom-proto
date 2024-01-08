@@ -2,10 +2,15 @@ syntax = "proto3";
 
 package demo.demo;
 option java_package = "cloud.tom.health.demo.demo";
-
+import "google/api/annotations.proto";
 
 service Demo {
-  rpc Hello (HelloRequest) returns (HelloResponse);
+  rpc Hello (HelloRequest) returns (HelloResponse){
+    option (google.api.http) = {
+      post: "/diagnosis.Demo/Hello"
+      body: "*"
+    };
+  }
 }
 
 message HelloRequest {
